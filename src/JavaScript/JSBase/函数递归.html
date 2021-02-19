@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数递归</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+               递归：
+                   方法:
+                   1. 首先去找临界值，即无需计算，获得的值。
+                   2. 找这一次和上一次的关系
+                   3. 假设当前函数已经可以使用，调用自身计算上一次
+               sum(100) = sum(99) + 100;
+               sum(n) = sum(n - 1) + n;
+            */
+    // 1. 计算1~n的和？
+    // function sum(n) {
+    //     if (n == 1){
+    //         return 1;
+    //     }
+    //     return sum(n - 1) + n;
+    // }
+    // alert(sum(100));
+
+    /*
+    2. 兔子繁殖问题，设有一对新生兔子，从第四个月开始他们每个月月初都生一对兔子，新生的兔子从第四个月月初开始又每个月生一对兔子
+    按此规律，并假定兔子没有死亡,n(n <= 20)个月月末共有多少对兔子？
+              递归：
+                  方法:
+                  1. 首先去找临界值，即无需计算，获得的值。
+                  2. 找这一次和上一次的关系
+                  3. 假设当前函数已经可以使用，调用自身计算上一次
+
+              rabbit(4) = rabbit(3) + rabbit(1);
+              rabbit(n) = rabbit(n - 1) + rabbit(n - 3);
+           */
+    // function rabbit(n) {
+    //     if (n < 4){
+    //         return 1;
+    //     }
+    //     return rabbit(n-1) + rabbit(n-3);
+    // }
+    // alert(rabbit(8));
+    /*
+               3. 有一堆桃子不知数目，猴子第一天吃掉一半，觉得不过瘾，又多吃了一只，第二天照此办法，吃掉剩下桃子的一半另加一只，
+               天天如此，到第num(num <= 10)天早上，猴子发现只剩一只桃子了，问这堆桃子原来有多少只？ （思路：n为还剩n天吃完的桃子数）
+
+               peach(10) / 2 - 1 = peach(9);
+               peach(10) = (peach(9) + 1) * 2;
+               peach(n) = (peach(n - 1) + 1) * 2;
+            */
+
+    /*
+        还剩n天吃完的桃子数??
+     */
+    // function peach(n) {
+    //     if (n == 1){
+    //         return 1;
+    //     }
+    //     return (peach(n-1)+1)*2;
+    // }
+    // alert(peach(4));
+    /*
+               4. 输入一个n,打印n个hello world的运行结果，
+               print(n) = print(n - 1) + 一次输出
+            */
+    // function print(n) {
+    //     if (n == 0){
+    //         return;
+    //     }
+    //     document.write("Test<br/>");
+    //     return print(n-1);
+    // }
+    // print(5);
+    /*
+           某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+           加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
+           第二位和第三位交换，请编写一个函数，传入原文，输出密文
+
+        */
+    //1234
+    function encryption(num) {
+        var a = (num % 10 + 5) % 10;
+        var b = (parseInt(num / 10) % 10 + 5) % 10;
+        var c = (parseInt(num / 100) % 10 + 5) % 10;
+        var d = (parseInt(num / 1000) + 5) % 10;
+        return Number("" + a + b + c + d);
+    }
+    alert(encryption(3333));
+
+
+</script>
+</html>

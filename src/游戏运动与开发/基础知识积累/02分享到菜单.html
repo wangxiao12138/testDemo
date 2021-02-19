@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享到菜单</title>
+</head>
+<body>
+    <div id = 'menu'>
+        <span>分享到</span>
+    </div>
+</body>
+<script>
+    var oMenu = document.getElementById("menu");
+    oMenu.onmouseenter = function () {
+        startMove();
+    };
+    oMenu.onmouseleave = function () {
+        startMove2();
+    };
+    var timer = null;
+    function startMove() {
+        var oMenu = document.getElementById("menu");
+        var speed = 10;
+        //1、每次启动定时器将上一次定时器关闭
+        clearInterval(timer);
+        timer = setInterval(function () {
+           //2.运动和停止分开
+            if (oMenu.offsetLeft == 0){
+                //没有，即使到了指定位置也会一直运动
+                clearInterval(timer);
+            } else {
+                oMenu.style.left = oMenu.offsetLeft + speed + 'px';
+            }
+        },30);
+    }
+    function startMove2() {
+        var oMenu = document.getElementById("menu");
+        var speed = -10;
+        //1、每次启动定时器将上一次定时器关闭
+        clearInterval(timer);
+        timer = setInterval(function(){
+            //2、运动和停止分开
+            if(oMenu.offsetLeft == -100){
+                clearInterval(timer);
+            }else{
+                oMenu.style.left = oMenu.offsetLeft + speed + 'px';
+            }
+        }, 30);
+    }
+</script>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    #menu {
+        width: 100px;
+        height: 200px;
+        background-color: gray;
+        position: absolute;
+        left: -100px;
+        top: 200px;
+    }
+    #menu span{
+        width: 20px;
+        height: 60px;
+        line-height: 20px;
+        background-color: yellow;
+        position: absolute;
+        left: 100px;
+        top: 70px
+    }
+</style>
+</html>

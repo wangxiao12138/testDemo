@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串基础知识</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    //1、通过new运算符去声明字符串
+    var str1 = new String(100);
+    alert(str1+200);  //直接进行字符串拼接 100200
+    // 2、省略new声明字符串
+    var str2 = String(100);
+    alert(str2+200);
+    //3、字符串常量赋值
+    var str3 = "hello";
+    alert(str3);
+    alert(typeof str3);
+    */
+    //var str  = "Hello Test World!"
+    // alert(str.length);
+    // alert(str.charAt(3));
+    // alert(str[4]);
+    //字符串中的字符进行遍历也可以通过循环遍历。
+   // for (var i = 0; i < str.length; i++){
+   //     document.write(str[i] + "<br/>");
+   // }
+    /*
+    var str = "hello北京";
+    var str2 = str;
+    for(var i = 0; i < str.length; i++){
+        document.write(str[i] + "<br/>");
+    }
+    document.write("hello".big() + "world".fontcolor("red") + "x".sub() + "y".sup());
+ */
+    /*
+ charCodeAt()
+  格式：字符串.charCodeAt(下标)
+  功能：访问字符串中对应下标字符的ASCII码值。
+ String.fromCharCode();
+   格式：String.fromCharCode(码值1, 码值2...);
+   功能：将传入的ASCII码值转成对应的字符
+   返回值：组成的字符串
+ */
+    /*
+    var str = "hello";
+    alert(str.charCodeAt(1));
+    var str = String.fromCharCode(97, 98, 99, 100);
+    alert(str);
+    */
+    //字符串查找
+    // var supStr = "abcabcabcdf";
+    // var subStr = 'abc';
+    // var index = supStr.indexOf(subStr,3);
+    // alert(index);
+
+    // var supStr = "vbcAbcabc";
+    // var subStr = "abc";
+    // var index = supStr.lastIndexOf(subStr, 4);
+    // var subStr = /abc/i
+    // var index = supStr.search(subStr);
+    // alert(index);
+    //字符串拼接
+    // var newStr = supStr.concat('hello', 100);
+    // var newStr = supStr + 'hello' + 100;
+    //子字符串的提取
+    // var newStr = supStr.substring(1,4);  //字符串.substring(start, end);
+    // var newStr = supStr.substr(1,3);  // 格式：字符串.substr(start, length);
+    // var newStr = supStr.slice(1,4); //字符串.slice(start, end);
+    // alert(supStr);
+    // alert(newStr);
+    //替换
+    // var str = "how are aRe are you";
+    // // var newStr = str.replace("are", "old are");
+    // var newStr = str.replace(/are/gi, "old are");
+    // alert(newStr);
+    // alert(str);
+
+    //字符串分割
+    // var str = "how  are you";
+    // var arr = str.split(" ", 2);
+    // // var arr = str.split(" ");
+    // alert(arr); //how,"",are,you
+    // alert(str); //how are you */
+
+    authParam = 'IntelligentRecommend,EWS_order,VideoBusi,CardActiv,Unfreeze,LimitedRelease,PublicAccounts,IntegratedServices,PersonalBusi,CompanyBusi,FinancialNews,ReportLoss,KnowledgeQuery,' +
+    'loanStatus,loanAmount,balanceAccountData,loanPeriod,loanDate,productInfor,lendRates,FamilyRelationInfo,maxiInfor,bankCardInquiry,paidInfo,otherInformation,quotaInfo,collateralStatus,'+'AgentCRM,ews,kbp,limitList,newCore,oldCore,payManage,rongHui,collectTrade';
+    var arr = authParam.split(",");
+    // alert(authParam);
+    // alert(arr);
+    for (var i = 0; i < arr.length; i++){
+        document.write(arr[i] + "<br/>");
+    }
+    function findChar(str, char) {
+        //返回满足条件的第一个值
+        str = str.split(',').find(item => item == char)
+        return str
+    }
+    // alert(findChar(authParam,'loanStatus'));
+    // alert(authParam.filter(item => item.prop != 'loanStatus'));
+    // var res = [80,69,92,77,90,96,98,99].filter(function(item, index, array){
+    //     return item == 80; //找出所有大于80的元素    //过滤的条件
+    // });
+    // var res = str.filter(function (item, index, array){
+    //     return item !== 'loanStatus'
+    // });
+    // alert(res);
+    // !this.findChar(authParam,'loanStatus')?authParam = authParam.filter(item => item.prop != 'loanStatus'): ''
+
+    //大小写转换
+    var str = 'helloString';
+    alert(str.toUpperCase());
+    alert(str.toLowerCase());
+
+
+
+
+
+</script>
+</html>

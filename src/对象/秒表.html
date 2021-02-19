@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>秒表</title>
+</head>
+<body>
+    <div id = 'div1'>
+        <span id = 'hour'>00</span>
+        <span>:</span>
+        <span id = 'min'>00</span>
+        <span>:</span>
+        <span id = 'sec'>00</span>
+        <br/>
+        <button id = 'start'>开始</button>
+        <button id = 'pause'>暂停</button>
+        <button id = 'reset'>复位</button>
+    </div>
+</body>
+<style>
+    #div1{
+        width: 100px;
+        height: 200px;
+        padding: 50px;
+        background: orange;
+        border: 1px solid black;
+        margin: 100px auto;
+        text-align: center;
+    }
+    #div1 span{
+        font-size: 20px;
+    }
+    #div1 button{
+        width: 100px;
+        height: 30px;
+        font-size: 16px;
+        margin: 20px;
+        background-color: black;
+        color: white;
+    }
+</style>
+<script src="tool.js"></script>
+<script>
+    window.onload = function () {
+        alert('页面加载初始化');
+    }
+    //通过id获取标签的方法进行简化
+    function $(id) {
+        return document.getElementById(id);
+    }
+    var i = 0; //总秒数
+    var time = null; // 记录定时器的返回值
+    window.onload = function () {
+        //获取按钮
+        /*
+        * setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+          setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+          由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+        * */
+        $("start").onclick = function () {
+            timer = setInterval(function () {
+                i++;
+                $("sec").innerHTML = doubleNum(i%60);  //doubleNum将各位的秒数前面补0 ，补全两位
+                $("min").innerHTML = doubleNum(parseInt(i / 60) % 60);
+                $("hour").innerHTML = doubleNum(parseInt(i / 3600));
+            }, 1000);
+        }
+
+        $("pause").onclick = function () {
+            clearInterval(timer);
+        }
+
+        $("reset").onclick = function () {
+            clearInterval(timer);
+            i = 0;
+            $("sec").innerHTML = "00";
+            $("min").innerHTML = "00";
+            $("hour").innerHTML = "00";
+
+        }
+    }
+</script>
+</html>

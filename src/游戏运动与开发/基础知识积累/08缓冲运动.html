@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动</title>
+</head>
+<body>
+    <button id="btn1">开始运动</button>
+    <div id="div1"></div>
+    <!--用来对比缓冲运动的移动轨迹-->
+    <span id="span1"></span>
+    <textarea name="" id="txt1" cols="30" rows="10"></textarea>
+</body>
+<script>
+    /*
+      缓冲运动
+      var speed = 距离;
+      var speed = (iTarget - iCur) / 8;
+      速度：0.375   计算机最小能够识别的像素是一像素。   speed = Math.ceil(speed);
+
+      */
+    var oBtn = document.getElementById("btn1");
+    var oDiv = document.getElementById("div1");
+
+    oBtn.onclick = function () {
+        startMove(500);
+    };
+    var timer = null;
+    function startMove(iTarget) {
+        var oDiv = document.getElementById("div1");
+        var oTxt1 = document.getElementById("txt1");
+        //1.清空定时器
+        clearInterval(timer)
+        //2.将运动和停止分开。
+        timer = setInterval(function () {
+            //1.计算速度
+            // var speed = (iTarget - oDiv.offsetLeft) / 8;
+            var speed = Math.ceil((iTarget - oDiv.offsetLeft) / 8);
+            //2. 解决问题：速度：0.375   计算机最小能够识别的像素是一像素。-------Math.ceil
+            if (oDiv.offsetLeft == iTarget){
+                clearInterval(timer);
+            } else {
+                oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                oTxt1.value += oDiv.offsetLeft + ", " + speed + "\n";
+            }
+        },30);
+    }
+</script>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    #div1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+    }
+    #span1{
+        width: 1px;
+        height: 500px;
+        background-color: black;
+        position: absolute;
+        left: 500px;
+    }
+</style>
+</html>

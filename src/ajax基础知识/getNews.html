@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">下载新闻列表</button>
+<ul id="ul1"></ul>
+
+</body>
+<script src="ajax.js"></script>
+<script>
+    var oBtn = document.getElementById("btn1");
+    var  oUl = document.getElementById("ul1");
+    oBtn.onclick = function () {
+        $ajax({
+            method: "get",
+            url: "getNews.php",
+            success: function (result) {
+                var arr = JSON.parse(result);
+                document.write(arr.length);
+                document.write(arr);
+               // for (var i=0; i< arr.length; i++){
+               //
+               //     document.write(arr[i].title);
+               //     document.write(arr[i].date);
+               //     // var newLi = document.createElement("li");
+               //     // var oA = document.createElement("a");
+               //     // oA.href = "#"+i;
+               //     // oA.innerHTML = arr[i].title;
+               //     // var oSpan = document.createElement("span");
+               //     // oSpan.innerHTML = `[${arr[i].date}]`;
+               //     // newLi.appendChild(oA);
+               //     // newLi.appendChild(oSpan);
+               //     // oUl.appendChild(newLi);
+               // }
+
+            },
+            error: function (msg) {
+                alert(msg);
+            }
+
+
+
+        });
+    }
+</script>
+</html>

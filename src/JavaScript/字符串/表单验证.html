@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+    <div id = 'div1'>
+        <input id = 'username' type="text" placeholder="用户名" onblur="func();" />
+        <span id = 'username_span'>6~18个字符，可使用字母、数字、下划线，需以字母开头</span>
+        <input type="text" placeholder="密码"/>
+    </div>
+</body>
+<script>
+    /*
+      事件驱动函数 onclick
+      onblur  失去焦点
+    */
+    function func() {
+        //1. 拿到输入框的内容
+        var oUsername = document.getElementById("username");
+        var oUsernameSpan = document.getElementById("username_span");
+        var oValue = oUsername.value;
+        //2. 判断
+        //(1)用户名长度是否符合
+        if (oValue.length < 6 || oValue.length > 18){
+            oUsernameSpan.innerHTML = '❗️用户名长度应为6~18个字符'
+        }else if (!isABC(oValue[0])){
+            //(2)用户名必须以字母开头
+            oUsernameSpan.innerHTML = '❗️用户名必需以英文字母开头';
+        }else {
+            //(3)用户名由字母、数字、下划线组成
+            var isYes = true;
+            for (var i = 0; i <oValue.length; i++){
+                if (!isDEF(oValue[i])){
+                    isYes = false;
+                    break;
+                }
+            }
+            if (isYes){
+                oUsernameSpan.innerHTML = "✅恭喜，该用户名可注册";
+            }else{
+                oUsernameSpan.innerHTML = "❗️用户名称需由字母、数字或下划线组成";
+            }
+        }
+    }
+    //判断单个字符是否是字母
+    function isABC(charStr){
+        if(charStr >= "a" && charStr <= "z" || charStr >= "A" && charStr <= "Z"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //判断单个字符是否符合数字字母下划线
+    function isDEF(charStr){
+        if(charStr >= "a" && charStr <= 'z' || charStr >= "A" && charStr <= "Z" || charStr >= "0" && charStr <= "9" || charStr == "_"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+<style>
+    #div1{
+        width: 200px; height: 200px;
+        background-color: lightblue;
+        border: 1px solid black;
+        text-align: center;
+        padding: 50px;
+        margin: 100px auto
+    }
+    #div1 input{
+        width: 200px; height: 30px;
+        font-size: 18px;
+        margin-top: 10px
+    }
+    #div1 span{
+        font-size: 14px;
+        color: red
+    }
+</style>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>认识对象</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+               1、历史
+                  面向过程编程语言： 汇编语言、C语言
+                  面向对象编程语言： C++、Java、JavaScript、Python
+
+
+               2、思想
+
+                 面向过程编程思想：只关心数学逻辑。
+                 面向对象编程思想：这种直接将生活逻辑映射到我们程序中的思想叫做面向对象编程思想。
+                   1、找出实体
+                   2、分析实体属性和功能
+                   3、让实体之间相互作用
+
+                 例子：
+                   有一辆车60km/h，跑在一条1000km的路，多久可以跑完？
+
+           */
+    //面向过程编程
+    var hours = 1000/60;
+    // alert(Math.round(hours));
+
+    //面向对象
+    var car = {
+        //属性
+        speed: 60,
+        //方法
+        run: function (road) {
+            return road.length / this.speed;
+        }
+    };
+    //实例化对象
+    var kuai = {
+        length: 1000
+    };
+    var hourss = car.run(kuai);
+    //alert(hourss);
+
+    //创建对象练习
+    var p1 = new Object();
+    p1.name = "blue";
+    p1.sex = "男";
+    p1.showName1 = function(){
+        alert("我的名字叫" + this.name);
+    }
+    p1.showSex1 = function(){
+        alert("我的性别是" + this.sex + "的");
+    }
+
+    // p1.showName1();
+    // p1.showSex1();
+
+    var p2 = {
+        name: 'blue',
+        sex:'男',
+        showName(){
+            alert("我的名字叫" + this.name);
+        },
+        showSex(){
+            alert("我的性别是" + this.sex + "的");
+        }
+    }
+    // p2.showName();
+    // p2.showSex();
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

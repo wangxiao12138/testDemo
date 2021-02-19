@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //创建数组的三种方式
+    // var arr = new Array(100, false, "hello");
+    // var  arr = Array(100, false, "hello");
+    // alert(arr);
+    // 长度为10的数组
+    // var arr = new Array(10);
+    // for (var i = 0; i< arr.length; i++){
+    //     arr[i] = parseInt(Math.random() * 10);
+    // }
+    // alert(arr);
+    /*
+               数组的属性：
+                   数组.length  返回值数组【元素】的个数。
+               元素：将数组存储的每一个数据，叫做数组的元素。
+               访问数组的元素：
+                   数组[下标]; 下标是从0开始的。
+               【注】数组和循环是天生一对。
+            */
+    // var arr = [10, true, 'test']
+    // for (var i = 0; i < arr.length; i++ ){
+    //     document.write(arr[i]+"<br/>")
+    // }
+    // //数组的遍历
+    // for (var i in arr){
+    //     document.write(arr[i]+"<br/>")
+    // }
+    // 数组的栈结构
+    // var arr = ['a', 'b', 'c'];
+    // var res = arr.push('d','f','g');
+    // alert(arr);
+    // alert(res); //返回值：插完元素以后数组的长度
+
+    // var arr = ['a', 'b', 'c','f', 'g'];
+    // var res = arr.pop();
+    // alert(arr); //从数组末尾取下一个元素
+    // alert(res); //取下一个元素
+
+    // 数组的队列结构
+    // var arr = ["唐朝", "元朝", "清朝"];
+    // var res = arr.shift();
+    // alert(arr); //从数组的头部取下一个元素
+    // alert(res);//取下的元素
+
+    // var arr = ["唐朝", "元朝", "清朝"];
+    // var res = arr.unshift('hh','ll');
+    // alert(arr); //从数组的头部插入一个元素
+    // alert(res);//插入元素以后的长度
+
+    // 引用数据类型
+    var arr1 = [10, 20, 30, 40];
+    var arr2 = arr1; //arr1,arr2指向的是同一个地址
+    arr2.push(50, 60);
+    alert(arr1); //10,20,30,40,50,60
+    alert(arr2); //10,20,30,40,50,60 */
+
+    /* concat() 拷贝原数组生成一个新数组。*/
+    var arr1 = [10, 20, 30, 40];
+    var arr2 = arr1.concat(); //重新开辟了一个新的内存地址
+    arr2.push(50, 60);
+    alert(arr1); //10,20,30,40
+    alert(arr2); //10,20,30,40,50,60
+
+</script>
+</html>

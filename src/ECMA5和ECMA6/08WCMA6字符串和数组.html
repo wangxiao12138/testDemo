@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    /*
+    *  传统字符串：所有单引号，双引号括起来的都叫做字符串。
+       ECMA6字符串：反引号   ``
+
+           1、ECMA6字符串，想怎么写怎么写，换行，代码缩进，都能在字符串中体现出来
+           2、${变量/表达式/函数调用}
+    * */
+    var str = `hello
+    world
+    test`;
+    // alert(str);
+    function showSelf({name, age, sex = "男"}){
+        //    alert("我叫" + name + "，今年" + age + ",是一位" + sex + "性");
+        alert(`我叫${name},今年${Math.max(age, 20, 30)}岁,是一位${sex}性`);
+
+    }
+
+    // showSelf({
+    //     age: 18,
+    //     name: "小明",
+    //     sex: "女"
+    // })
+
+
+    //数组
+    //Array.from()  将伪数组转成真数组
+    // var aList = document.getElementsByTagName("li");
+    // alert(aList.length);
+    //
+    // aLis = Array.from(aList);
+    // alert(aLis.length);
+    // aLis.push("hello");
+    //
+    // alert(aLis)
+
+    /*
+               find()
+
+               功能：在数组中查找符合条件的元素，只要找到第一个符合条件的元素，就终止遍历。---只查一个
+               返回值：找到的元素。
+
+               findIndex()
+               返回值：找到的元素的下标。
+           */
+
+    // var arr = [10, 20, 30, 40, 50];
+    // var res = arr.find(function (item, index, arr) {
+    //     //查询条件
+    //     return item > 30;
+    // })
+    // alert(res);
+    // alert(arr.find(item => item>20));
+    // alert(arr.findIndex(item => item > 20));
+
+    /*
+                   arr.copyWithin
+                   第一个参数：从哪个下标开始
+                   第二个参数和第三个参数是：范围 [start, end)
+               */
+
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    arr.copyWithin(2, 4, 9);
+    alert(arr);
+
+
+
+
+</script>
+</html>

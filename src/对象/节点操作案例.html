@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作案例</title>
+</head>
+<body>
+    <div id="div1">
+        <input type="text" id="input1" placeholder="请输入内容"><br>
+        <button>增加</button>
+        <button>删除</button>
+        <button>拷贝</button>
+    </div>
+    <div id="div2">
+        <!--<div>xxx <button>x</button></div>-->
+        <!--<div>xxx <button>x</button></div>-->
+        <!--<div>xxx <button>x</button></div>-->
+    </div>
+</body>
+<script src = 'tool.js'></script>
+<script>
+    var oDiv1 = document.getElementById("div1");
+    var oDiv2 = document.getElementById("div2");
+    var oIput = document.getElementById("input1");
+
+    //获取div1里面的button
+    var aBtns = oDiv1.getElementsByTagName("button");
+
+    //按钮添加点击事件----增加
+    aBtns[0].onclick = function () {
+        if (!oIput.value){
+            alert("输入内容不能为空");
+        } else {
+            //获取输入框内容，并创建节点添加到页面上
+            var newDiv = document.createElement("div");
+            var  oTxt = document.createTextNode(oIput.value);
+            newDiv.appendChild(oTxt);
+            newDiv.style.backgroundColor = randomColor();
+            var newBtn = document.createElement("button");
+            newBtn.innerHTML = 'X';
+            newDiv.appendChild(newBtn);
+            oDiv2.appendChild(newDiv);
+            oIput.value = '';
+            //新增加的按钮添加点击事件
+            newBtn.onclick = function () {
+                oDiv2.removeChild(this.parentNode);  //删除子节点，返回父节点
+            }
+        }
+    }
+    //删除按钮
+    aBtns[1].onclick = function () {
+        //删除最后一个节点
+        oDiv2.removeChild(oDiv2.lastChild);
+    }
+    //拷贝赋值按钮
+    aBtns[2].onclick = function(){
+        //拷贝最后一个节点，再添加到页面上
+        var newNode = oDiv2.lastChild.cloneNode(true);
+        oDiv2.appendChild(newNode)
+    }
+</script>
+<style>
+    #div1{
+        width: 400px;height: 100px;
+        background-color: orange;
+    }
+    #div2{
+        width: 400px;height: 500px;
+        background-color: peachpuff;
+    }
+    #input1{
+        width: 380px;
+        height: 30px;
+        font-size: 18px;
+    }
+    #div1 button{
+        width: 100px; height: 30px;
+        font-size: 18px;
+        background-color: black;
+        color: white; margin-left: 5px;
+        margin-top: 5px
+    }
+    #div2 div{
+        border-bottom: 1px dashed gray;
+        padding: 2px;
+        position: relative;
+    }
+    #div2 button{
+        position: absolute;
+        right: 0px;
+    }
+</style>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的常用方法</title>
+</head>
+<body>
+
+</body>
+<script>
+    /* join方法
+    格式：数组.join(字符串)
+    功能：将数组中的元素，用传入的拼接符，拼接成一个字符串
+    返回值：拼接好的字符串。
+    */
+    // var arr = [10, 20, 30, 40];
+    // alert(arr);
+    // var str = arr.join("+++");
+    // alert(str);
+    // alert(arr);
+
+    /*
+    * reverse  逆序
+    * */
+    // var arr = [10, 20, 30, 40];
+    // alert(arr);
+    // var str = arr.reverse();
+    // alert(str);
+    // alert(arr);
+
+    /*
+    数组排序
+    sort
+    格式：数组.sort()  默认从小到大排序，按照字符串排序。
+    参数：一个函数，代表要怎么去进行排序（固定用法）
+    */
+    // var arr = [90, 60, 30, 10];
+    // alert(arr);
+    // var str = arr.sort();
+    // alert(str);
+    // alert(arr);
+
+    /* 数值大小排序*/
+    // var arr = [1, 10, 20, 15, 25, 5];
+    /* arr.sort(function(value1, value2){
+       return value1 - value2;
+    }) */
+    // arr.sort(function(value1, value2){
+    //     return value2 - value1;
+    // })
+    // alert(arr);
+
+
+    // 数组练习
+    /*
+    2. 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；
+      然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+    */
+    //1.声明数组
+    var arr = Array(30);
+    for (var i = 0; i < arr.length; i++){
+        arr[i] = i * 2 + 2;
+    }
+    // alert(arr);
+    //2.求平均数
+    var averageArr = [];
+    for (var  i = 0; i < 6; i++){
+        var newArr = arr.splice(0,5);
+        //3. 去除每一组数据的平均数
+        // alert(newArr);
+        var sum = 0;
+        for (var j = 0; j < newArr.length; j ++ ){
+            sum += newArr[j];
+        }
+        averageArr.push(sum/5);
+    }
+    alert(averageArr)
+</script>
+</html>

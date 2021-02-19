@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享到菜单</title>
+</head>
+<body>
+    <div id = 'menu'>
+        <span>分享到</span>
+        <ul>
+            <li>菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+            <li>菜单4</li>
+            <li>菜单5</li>
+            <li>菜单6</li>
+            <li>菜单7</li>
+            <li>菜单8</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var oMenu = document.getElementById("menu");
+    // 鼠标浮动或离开到某个区域时（onmouseenter、onmouseleave）
+    oMenu.onmouseenter = function () {
+        startMove(0);
+    };
+    oMenu.onmouseleave = function () {
+        startMove(-100);
+    };
+    var timer = null;
+    //合并startMove和startMove1
+    //通过形参(哪些不同)合并  iTarget:展开的目标距离
+    function startMove(iTarget) {
+        var oMenu = document.getElementById("menu");
+        var speed = 10;
+        //1、每次启动定时器将上一次定时器关闭
+        clearInterval(timer);
+        timer = setInterval(function () {
+            if (oMenu.offsetLeft < iTarget){
+                //展开
+                speed = Math.abs(speed);
+            } else {
+                //收起
+                speed = -Math.abs(speed);
+            }
+
+            //2.运动和停止分开
+            if (oMenu.offsetLeft == iTarget){
+                //没有，即使到了指定位置也会一直运动
+                clearInterval(timer);
+            } else {
+                oMenu.style.left = oMenu.offsetLeft + speed + 'px';
+            }
+        },30);
+    }
+</script>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    #menu {
+        width: 100px;
+        height: 200px;
+        background-color: oldlace;
+        position: absolute;
+        left: -100px;
+        top: 200px;
+    }
+    #menu span{
+        width: 20px;
+        height: 60px;
+        line-height: 20px;
+        background-color: ghostwhite;
+        position: absolute;
+        left: 100px;
+        top: 70px
+    }
+    #menu ul li{
+        font-size: 12px;
+        margin: 10px auto;
+        color: black;
+        line-height: 12px;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+</html>

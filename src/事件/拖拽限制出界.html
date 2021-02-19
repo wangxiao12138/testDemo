@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽限制出界</title>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    /*
+      拖拽：（拖拽的三剑客）  伪代码(代码草稿)
+          mousedown
+              记录鼠标按下位置和被拖拽物体相对距离
+              var offsetX = e.clientX - node.offsetLeft;
+              var offsetY = e.clientY - node.offsetTop;
+          mousemove
+              一直保持，相对距离
+              node.style.left = e.clientX - offsetX + 'px';
+              node.style.top = e.clientY - offsetY + 'px';
+          mouseup
+              取消拖拽
+       */
+    var oDv = document.getElementById("div1");
+    drag(oDv);
+    function drag(node) {
+        //mousedown  拖拽
+        node.onmousedown = function (ev) {
+            var event = ev || window.event;
+            //记录鼠标按下位置和被拖拽物体相对距离
+            var offsetX = event.clientX - node.offsetLeft;
+            var offsetT = event.clientY - node.offsetTop;
+            //被拖拽物体保持相对距离和鼠标移动---针对整个当前窗口而言---document
+            document.onmousemove = function (ev) {
+                var e = ev || window.event;
+
+                //限制出界
+                /*
+                * clientLeft,clientTop: 表示内容区域的左上角相对于整个元素左上角的位置（包括边框）
+                * */
+                var left = e.clientX - offsetX;
+                var top = e.clientY - offsetT;
+
+                if (left <= 0){
+                    left = 0;
+                }
+                //输出当前窗口的宽、高
+                var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;
+                if (left >= (windowWidth-oDv.offsetWidth)){
+                    left = windowWidth - oDv.offsetWidth;
+                }
+                if(top <= 0){
+                    top = 0;
+                }
+                var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                if(top >= windowHeight - oDv.offsetHeight){
+                    top = windowHeight - oDv.offsetHeight;
+                }
+
+                node.style.left = left + 'px';
+                node.style.top = top + 'px';
+
+            }
+        }
+        //取消拖拽
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+
+
+
+
+</script>
+<style>
+    #div1{
+        width: 100px;
+        height: 100px;
+        background-color: #7FC555;
+        position: absolute;
+    }
+</style>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+</head>
+<body>
+    <button id="btn1">按钮</button>
+    <h1 class="test">测试测试</h1>
+</body>
+<script>
+    /*
+    番茄炒蛋
+    番茄 + 鸡蛋 + 调料
+
+    事件绑定：
+        元素节点.on + 事件类型 = 匿名函数;
+    【注】系统会在事件绑定一旦完成的时候，生成一个事件对象。
+
+    【注】触发事件的时候，系统会自动去调用事件绑定的函数。将事件对象当做第一个参数传入。
+     */
+    //（匿名）普通函数
+    // var show = function (ev) {
+    //     //  alert(ev);  //这种通过形参拿事件对象的方式在IE8以下不兼容。 IE8以下  window.event;
+    //     var event = ev || window.event;
+    //     alert(event);
+    //     alert("测试");
+    // }
+    // show();
+
+    // var oBtn = document.getElementById("btn1");
+    // //  oBtn.onclick = show;
+    //
+    // oBtn.onclick = function(ev){
+    //     //事件对象获取的方式，固定写法。
+    //     var e = ev || window.event;
+    //     alert(e);
+    // }
+
+    /*
+     *  事件对象：
+     button 的属性
+     0  左键
+     1  滚轮
+     2  右键
+
+     获取当前鼠标位置：(原点位置不一样)
+     clientX  clientY  原点位置：可视窗口的左上角为原点
+     pageX    pageY    原点位置：整个页面的左上角(包含滚出去的滚动距离)
+     screenX  screenY  原点位置：电脑屏幕的左上角
+      */
+    document.onmousedown = function (ev) {
+        var e = ev || window.event;
+        alert(e.clientX + "," + e.clientY);
+    }
+
+
+
+</script>
+<style>
+    .test{
+        height: 300px;
+    }
+</style>
+</html>

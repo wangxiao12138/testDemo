@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取页面样式练习</title>
+</head>
+<body>
+    <div id = 'div1'>
+        div文本
+    </div>
+</body>
+<script src="tool.js"></script>
+<script>
+    /*
+      写一个定时器,每间隔一秒修改一次div内文本颜色和文字大小.
+      最开始这个文字是默认大小,大小开始增大,当增大了6次以后,
+          文字大小开始缩小,缩小6次,文字再开始增大。
+    */
+    /*
+     颜色随机
+     rgba(255,255,255,1);
+     parseInt(Math.random() * 256)
+     */
+    var oDiv = document.getElementById("div1");
+    var speed = 5; //每一次变化的大小
+    var count = 0; //计数
+    setInterval(function () {
+        //每间隔一秒修改一次div内文本颜色和文字大小
+        oDiv.style.color = randomColor();
+        //1.取到字体大小
+        var iCur = parseInt(getStyle(oDiv, 'fontSize'))
+        // alert(iCur);
+        oDiv.style.fontSize = iCur + speed +'px';
+        count ++;
+        if (count % 6 == 0){
+            speed *= -1;
+        }
+    }, 1000);
+
+    //随机获取颜色
+    function randomColor() {
+        var str = "rgba("+parseInt(Math.random() * 256)+","+parseInt(Math.random() * 256)+","+parseInt(Math.random() * 256)+",1)";
+        return str;
+    }
+
+
+</script>
+<style>
+    #div1{
+        width: 400px;height: 200px;
+        background-color: white;
+        border: 1px solid black;
+        margin: 200px auto;
+        text-align: center;
+        line-height: 200px;
+        font-size: 18px;
+    }
+</style>
+</html>

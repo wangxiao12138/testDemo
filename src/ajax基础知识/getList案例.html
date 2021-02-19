@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn1">下载数据</button>
+</body>
+<script src="ajax.js"></script>
+<script>
+    /*
+    * 前后端交互的流程
+    * 1. ajax下载数据
+    * 2. 分析数据，将数据格式转换成对应的格式
+    * 3. 处理数据
+    * */
+    var oBtn = document.getElementById("btn1");
+    oBtn.onclick = function () {
+        $ajax({
+           method: "get",
+           url: "getList.php",
+            success: function (result) {
+                document.write(result+"<br/>");
+                var arr = JSON.stringify(result);
+                document.write("<br/>");
+                document.write("-------------------------------------------")
+                document.write("<br/>");
+                document.write(arr);
+                document.write("<br/>");
+                document.write("-------------------------------------------")
+                document.write("<br/>");
+                for (var i = 0; i<arr.length; i++){
+                    document.write(i + " " + arr[i]);
+                }
+            },
+            error: function (msg) {
+                alert(msg);
+            }
+        });
+    }
+
+</script>
+</html>

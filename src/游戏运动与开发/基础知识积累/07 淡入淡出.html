@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出</title>
+</head>
+<body>
+    <img id="img1" src="timg.jpeg" alt="">
+</body>
+<script>
+    var oDiv = document.getElementById("img1");
+    // 鼠标浮动或离开到某个区域时（onmouseenter、onmouseleave）
+    oDiv.onmouseenter = function () {
+        //30-100
+        startMove(100);
+    };
+    oDiv.onmouseleave = function () {
+        //100-30
+        startMove(30);
+    };
+    var alpha = 30;
+    var timer = null;
+    /* 类似于透明度这类型的css属性，使用中间变量替代计算。*/
+    function startMove(iTarget) {
+        var speed = 2;
+        var oDiv = document.getElementById("img1");
+        //1、每次启动定时器将上一次定时器关闭
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //参数合并
+            if (alpha > iTarget){
+                //移出
+                speed = -Math.abs(speed)
+            }else {
+                //移入
+                speed = Math.abs(speed);
+            }
+            if (alpha == iTarget){
+                clearInterval(timer);
+            } else {
+                alpha += speed;
+                //給当前图片上设置透明度，考虑浏览器兼容
+                oDiv.style.opacity = alpha / 100;
+                oDiv.style.filter = "alpha(opacity =" + alpha +")";
+                document.title = alpha;
+            }
+        },30);
+    }
+</script>
+<style>
+    /*透明度*/
+    #img1{
+        /*浏览器兼容*/
+        opacity: 0.3;
+        filter: alpha(opacity = 30);
+    }
+</style>
+</html>

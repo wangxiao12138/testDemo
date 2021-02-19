@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id = 'div1' title = 'hello' class = 'box' style="font-size: 10px">div文本</div>
+</body>
+<script>
+    window.onload = function () {
+        var oDiv = document.getElementById("div1");
+        //alert(oDiv);
+        // alert(oDiv.id);
+        // alert(oDiv.title);
+        // alert(oDiv.className);
+        oDiv.id = "div2";
+        oDiv.title = 'world';
+        oDiv.className = 'box1';
+        oDiv.style.fontSize = '20px';
+    }
+</script>
+<style>
+    .box{
+        height: 300px;
+        width: 300px;
+        background-color: red
+    }
+    .box1{
+        height: 300px;
+        width: 300px;
+        background-color: goldenrod;
+    }
+</style>
+</html>

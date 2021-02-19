@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax基础</title>
+</head>
+<body>
+    <button id="btn1">数据下载</button>
+</body>
+<script>
+    /*
+    服务器  apache这个软件运行在你的电脑上，那么你电脑上某一个磁盘就对外可见，别人可以通过IP或者域名访问到这个位置。
+
+    服务器  资源提供方
+    客户端  资源受益方
+    相对概念。
+
+    服务器安装：
+        （集成开发环境）
+        WAMP
+            windows + apache + mysql + php
+        LAMP
+            linux + apache + mysql + php
+        PHPnow
+            apache + mysql + php
+
+    PHPnow/htdocs  服务器的根目录
+        localhost  直接访问本地电脑服务器
+        127.0.0.1  直接访问本地电脑服务器(保留IP)
+        IP         访问当前电脑的服务器
+
+    默认访问到的是 index开头的文件
+        index.php
+        index.html
+        index.jsp
+
+            */
+    /*
+     ajax  异步的 javascript和 xml(数据传输格式)
+           异步的 javascript 和  数据传输
+
+     【注】ajax是前后端数据交互的搬运工，都可以异步执行。
+
+
+     xml数据传输格式（大型的门户网站  新浪、网易、凤凰网）
+         优点：
+             1、种类丰富
+             2、传输量非常大
+         缺点：
+             1、解析麻烦
+             2、不太适合轻量级数据
+
+     json数据传输格式(字符串) 95%移动端应用。
+         优点：
+             1、轻量级数据
+             2、解析比较轻松
+         缺点：
+             1、数据种类比较少
+             2、传输数据量比较小
+
+     JSON.parse()
+     JSON.stringify()
+
+
+            */
+
+    /*
+   【注】任何一个程序都是由很多个小程序组成的。
+   【注】用来描述一个程序运行状态。
+       同步  阻塞，当前程序运行，必须等前一个程序运行完毕以后，才能运行。
+       异步  非阻塞，当前程序运行，和前面程序的运行没有任何关系。
+     */
+    //1. ajax下载数据
+    var oBtn = document.getElementById("btn1");
+    oBtn.onclick = function () {
+        /*
+            XMLHttpRequest  IE8以下不兼容
+            IE8以下声明ajax的方法是
+                ActiveXObject("Microsoft.XMLHTTP");
+        */
+        //1. 创建ajax对象
+        // var xhr = new XMLHttpRequest();
+
+        var xhr = null;
+        if (window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else {
+            xhr = ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+        //2. 调用open
+        /**
+         * 第一个参数： 请求方式  get post
+         第二个参数：url
+         第三个参数： 是否异步
+         true 异步
+         false同步
+         * */
+        xhr.open("get","1.txt", true);
+
+        //3, 调用send
+        xhr.send();
+
+        //4. 等待数据响应
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4){
+                alert(xhr.responseText);
+            }
+        }
+    }
+
+
+
+
+
+</script>
+</html>

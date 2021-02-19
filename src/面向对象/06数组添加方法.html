@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组添加方法</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr1 = [10, 20, 30, 40, 50];
+    var arr2 = [1, 2, 3, 4, 5];
+
+    /* 想要给数组添加一个方法，可以对数组中每一个元素进行求和*/
+    /**
+     * this在全局变量中指向window;
+     * 在对象方法中指向该对象；
+     * 在事件绑定中，指向目标对象；
+     * */
+    arr1.sum = function () {
+        var res = 0;
+        for (var i=0; i<this.length; i++){
+            res += this[i];
+        }
+        return res;
+    }
+    arr2.sum = function(){
+        var res = 0;
+        for(var i = 0; i < this.length; i++){
+            res += this[i];
+        }
+        return res;
+    }
+    alert(arr1.sum());
+    alert(arr2.sum());
+    alert(arr1.sum == arr2.sum);
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新特性之环绕文字</title>
+</head>
+<body>
+<div id="parent">
+    <div id="shape">aaaaa</div>
+    CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。
+</div>
+</body>
+<style>
+    #parent{
+        width: 300px;
+        height: 300px;
+        border: 1px black solid;
+        margin: 20px;
+    }
+    #shape{
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border: 10px solid black;
+        margin: 10px;
+        float: left;
+        background: red;
+        /*特殊图形剪贴的路径*/
+        clip-path: polygon(0 0, 0 100px, 100px 100px);
+        shape-outside: polygon(0 0, 0 100px, 100px 100px);
+        shape-margin: 15px;
+    }
+    body{
+        height: 2000px;
+    }
+    html::-webkit-scrollbar{
+        width:10px;
+    }
+    html::-webkit-scrollbar-thumb{
+        background: #f90;
+        border-radius: 15px;
+    }
+    html::-webkit-scrollbar-track{
+        background:#dedede;
+        box-shadow: inset 0 0 5px gray;
+    }
+</style>
+</html>

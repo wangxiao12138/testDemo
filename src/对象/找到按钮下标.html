@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找到按钮下标</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+</body>
+<script>
+    var aBtns = document.getElementsByTagName("button");
+    //点击按钮获取下标
+    for (var i=0; i<aBtns.length; i++){
+        //给美每一个按钮添加一个自定义属性
+        aBtns[i].index = i;
+        aBtns[i].onclick = function () {
+            alert(this.index);
+        }
+    }
+    alert("循环结束了"+i);
+</script>
+</html>

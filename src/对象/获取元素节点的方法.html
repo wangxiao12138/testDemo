@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素节点的方法</title>
+</head>
+<body>
+    <ul id = 'ul1'>
+        <li>111</li>
+        <li class = 'box'>111</li>
+        <li>111</li>
+        <li>111</li>
+        <li class = 'box'>111</li>
+        <li name = 'hello'>111</li>
+        <div class = 'box' name = 'hello'>div11</div>
+    </ul>
+    <input type="text" name = 'hello'/>
+    <span name = 'hello'>span</span>
+    <ol id = 'ol1'>
+        <li>222</li>
+        <li class = 'box'>222</li>
+        <li class = 'box'>222</li>
+        <li>222</li>
+    </ol>
+</body>
+<script>
+    /*
+    document.querySelector()
+    返回值：一个元素节点，找到符合条件的第一个元素节点。
+
+
+    document.querySelectorAll()
+    返回值：返回值，是一个伪数组。
+
+
+    参数：字符串  CSS选择器格式字符串。
+  */
+    window.onload = function () {
+        var aLis = document.getElementsByTagName("li");
+        // alert(JSON.stringify(aLis));
+        //获取ol下的li节点
+        // var oOl = document.getElementById("ol1");
+        // var olLIst = oOl.getElementsByTagName("li");
+        // for (var i = 0; i< olLIst.length; i++){
+        //     olLIst[i].style.backgroundColor = 'red';
+        // }
+        // var oUl = document.getElementById("ul1");
+        // var nodes = oUl.getElementsByClassName("box");
+        // alert(JSON.stringify(nodes));
+        var nodes = document.querySelectorAll('ul [name=hello]');  //ul下的name=hello的元素节点
+        alert(nodes.length);
+        for(var i = 0; i < nodes.length; i++){
+            nodes[i].style.backgroundColor = 'red';
+        }
+    }
+
+</script>
+</html>

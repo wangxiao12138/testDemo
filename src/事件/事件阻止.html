@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件阻止</title>
+</head>
+<body>
+<!--右键阻止-->
+    <div id = 'menu'>
+        <ul>
+            <li>菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+    </div>
+<!--超链接跳转-->
+<a id="a1" href="https://www.baidu.com/" target="_blank">百度</a>
+</body>
+<script>
+    /*
+     实现自定义的右键菜单，鼠标按下
+     按下的是右键  在右键这个位置显示菜单
+     如果按下是别的键， 菜单消失
+    */
+    //官方的右键菜单
+    document.oncontextmenu  = function () {
+        //alert('右键');
+        return false;
+    }
+    var oMenu = document.getElementById("menu");
+
+    document.onmousedown = function(ev){
+        var e = ev || window.event;
+        if(e.button == 2){
+            oMenu.style.display = 'block';
+            oMenu.style.left = e.clientX + 'px';
+            oMenu.style.top = e.clientY + 'px';
+        }else{
+            oMenu.style.display = 'none';
+        }
+    }
+    /*
+     阻止超链接的默认行为：
+         1、简陋的阻止a链接默认行为的方式
+             缺点：运行到了return，后续的内容我们就执行不到了。
+         2、规范的方法
+             e.preventDefault();   W3C
+              window.event.returnValue = false;  低版本IE浏览器
+            */
+    var a1 = document.getElementById('a1');
+    // a1.onclick = function () {
+    //     return confirm("你确定要进入百度吗？");
+    // }
+    a1.onclick = function (ev) {
+        var event = ev || window.event;
+        preDef(event);
+        alert("可以进行后续的操作");
+    }
+    function preDef(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            window.event.returnValue = false;
+        }
+    }
+</script>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    #menu{
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+        display: none;
+        position: absolute;
+    }
+    ul {
+        list-style:none ;
+    }
+</style>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage本地存储对象</title>
+</head>
+<body>
+    <button id="btn1">删除</button>
+</body>
+<script>
+    /*
+      本地存储技术:
+      localStorage(IE8以下不兼容)
+          1、永久存储
+          2、最大可以存储5M   客户端的一个微型数据库
+          3、只能存储string
+      cookie
+          1、可以设置过期时间
+          2、最大可以存4KB
+          3、每一个域名下面最多可以存储50条数据
+          两者若有一条满足就满足条件
+      sessionStorage（结合后台使用）
+
+
+
+
+      localStorage 本地存储对象
+          setItem(name, value);存储
+          getItem(name);获取
+          removeItem(name);删除
+
+    */
+    if (!window.localStorage){
+        alert("当前页面不支持window.localStorage");
+    } else {
+        localStorage.setItem("a","1");
+        localStorage.b = "2";
+        localStorage['c'] = "3";
+        alert(localStorage.getItem("a"));
+        alert(localStorage.b);
+        alert(localStorage['c']);
+    }
+
+    //删除
+    var oBtn = document.getElementById("btn1");
+    oBtn.onclick = function () {
+        localStorage.removeItem('a');
+        alert(localStorage.getItem("a"));   //null
+        alert(localStorage.b);
+        alert(localStorage['c']);
+    }
+
+
+
+</script>
+</html>

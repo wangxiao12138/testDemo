@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            //对象赋值-----传的是地址，修改一个其他的也会修改
+            var obj1 = {
+                a: 10,
+                b: 20,
+                c: 30
+            };
+
+            var obj2 = obj1;
+
+            obj2.c = 100;
+            console.log(obj1);
+            console.log(obj2);
+
+
+            //对象拷贝----修改其中一个，另外一个不会修改
+            // var obj1 = {
+            //     a: 10,
+            //     b: 20,
+            //     c: 30
+            // };
+            //
+            // var obj2 = {};
+            // for(var attr in obj1){
+            //     obj2[attr] = obj1[attr];
+            // }
+            //
+            // obj2.c = 100;
+            // console.log(obj1);
+            // console.log(obj2);
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

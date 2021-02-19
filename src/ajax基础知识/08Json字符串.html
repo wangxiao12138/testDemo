@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="demo"></p>
+</body>
+<script>
+    /**
+     * JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。--------------json_encode
+     * JSON.parse(text[, reviver]) 用于将一个 JSON 字符串转换为对象。-----------------------json_decode
+     * */
+    var str = {"name":"菜鸟教程", "site":"http://www.runoob.com"}
+    str_pretty1 = JSON.stringify(str)
+    document.write( "只有一个参数情况：" );
+    document.write( "<br>" );
+    document.write("<pre>" + str_pretty1 + "</pre>" );
+
+    document.write( "<br>" );
+    str_pretty2 = JSON.stringify(str, null, 4) //使用四个空格缩进
+    document.write( "使用参数情况：" );
+    document.write( "<br>" );
+    document.write("JSON 字符串"+"<pre>" + str_pretty2 + "</pre>" ); // pre 用于格式化输出
+    document.write("json字符串属性"+str_pretty2.name)
+
+
+
+    // JSON.parse('{"p": 5}', function(k, v) {
+    //     if (k === '') {
+    //         return v;
+    //     }
+    //     return v * 2;
+    // });
+
+    JSON.parse('{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}', function(k, v) {
+        console.log(k); // 输出当前属性，最后一个为 ""  1 2 4 6 5 3
+        document.write( "对象的key value值"+ k +" "+ v + "<br>" );
+        return v;       // 返回修改的值
+    });
+</script>
+</html>

@@ -1,0 +1,30 @@
+{
+  "id": "2293092",
+  "name": "css样式lian'xi",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "19031093",
+      "name": "袋子",
+      "font_class": "bag",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "19031133",
+      "name": "蝴蝶结",
+      "font_class": "bow",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "19031221",
+      "name": "糖果",
+      "font_class": "candy",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    }
+  ]
+}

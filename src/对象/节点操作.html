@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id = 'div1'>
+        <em>em</em>
+        div文本
+        <strong>strong</strong>
+    </div>
+    <button id = 'btn1'>节点操作</button>
+</body>
+<script>
+    /*
+    *
+
+                createElement()
+                    格式：document.createElement()
+                    参数：标签名
+                    返回值：创建好的这个节点
+
+                appendChild()
+                    格式：node1.appendChild(node2);
+                    功能：将node2节点插入到node1节点子节点的末尾
+
+                createTextNode()
+                    格式：document.createTextNode(文本);
+                    功能：创建文本节点(纯文本)
+
+                insertBefore()
+                    格式：box1.parentNode.insertBefore(box2, box1);
+                    功能：将box2添加到box1的前面
+
+                replaceChild()
+                    格式：box1.parentNode.replaceChild(box2, box1);
+                    功能：用box2节点将box1节点替换掉。
+
+                cloneNode()
+                    格式：node.cloneNode()
+                    格式2：node.cloneNode(true);  克隆节点本身和子节点
+                    返回值：克隆出来的新节点
+
+                removeChild()
+                    格式：box.parentNode.removeChild(box);
+                    功能：将box节点从页面上删除
+    * */
+    var oBtn = document.getElementById("btn1");
+    var oDiv = document.getElementById("div1");
+    oBtn.onclick = function () {
+        //1. document.write()【注】会覆盖页面上原有的内容。
+     //   document.write("<h1>会覆盖页面上原有的内容</h1>")
+
+        //2.创建节点，并将将node2新节点插入到node1节点子节点的末尾
+        var op = document.createElement("p");
+        //创建文本节点(纯文本)
+        var oText = document.createTextNode("创建节点测试");
+       op.appendChild(oText);
+        //oDiv.appendChild(op);
+
+        //3.将oP节点插入到oDiv节点的前面
+        //document.body.insertBefore(op,oDiv);
+
+        // 4.用oP节点，将oDiv节点替换掉
+        //document.body.replaceChild(op, oDiv);
+
+        //5.复制节点
+        // var newNode = oDiv.cloneNode();//该方法目前不能使用
+         var newNode = oDiv.cloneNode(true);
+        document.body.appendChild(newNode);
+
+
+
+    }
+
+</script>
+</html>
