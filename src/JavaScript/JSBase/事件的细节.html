@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的细节</title>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id = 'div3'>
+                <a href="https://www.baidu.com">百度</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src = '../../jQuery/jquery入门/jquery-1.10.1.min.js'></script>
+<script>
+    /*
+        注】都是兼容的后。
+        • ev pageX
+        which
+            鼠标事件：button
+            1 左键
+            2 滚轮
+            3 右键
+            keydown: keyCode 键码
+            keypress: charCode 字符码
+        • preventDefault stopPropagation
+        【注】大家不能为了使用JQ而使用JQ。如果实际开发的时候JS一些比较的简单的操作，没必要写成JQ代码。
+             */
+    $("div").click(function (ev) {
+        ev.stopPropagation();
+        // alert(this.id);
+    })
+    $("a").click(function (ev) {
+        // ev.preventDefault();
+        // ev.stopPropagation();
+        //既阻止事件冒泡，又阻止默认行为
+        return false;
+        // alert(this.id);
+    })
+
+    //mousedown 鼠标点击事件
+    // $(document).mousedown(function (ev) {
+    //     //输出滚动距离
+    //     alert(ev.pageX + "mousedown," + ev.pageY);
+    //     //可视窗口
+    //     alert(ev.clientX + "mousedown," + ev.clientY);
+    // })
+    $(window).keydown(function(ev){
+        alert('keydown'+ev.which);
+    })
+
+    $(window).keypress(function(ev){
+        alert('keypress'+ev.which);
+    })
+
+
+</script>
+<style>
+    div{
+        padding: 50px;
+    }
+    #div1{
+        background-color: #7FC555;
+    }
+    #div2{
+        background-color: yellow;
+    }
+    #div3{
+        background-color: orange;
+    }
+</style>
+</html>

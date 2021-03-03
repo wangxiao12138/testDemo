@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <div class="box">div1</div>
+    <div>div2 <strong class="box"></strong></div>
+
+    <h2>h2</h2>
+    <p>p</p>
+    <h3>h3</h3>
+    <em>em</em>
+    <div>div</div>
+
+    <ul>
+        <li class = 'box'></li>
+        <li name = 'hello'></li>
+        <li class = 'box'></li>
+    </ul>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+
+    <div id = 'div1' title = 'hello' class = 'box'></div>
+    <div id="div2" class="box2 box3 box4">addClass和removeClass</div>
+
+    <div id = 'div3'>222222222222222<em>em</em>div文本2222222222222</div>
+    <span>1111111111span111111111111</span>
+
+</body>
+<script>
+    /*
+        jquery方法：
+        filter   过滤 对已经获取到的网页元素进行过滤
+        not  filter的反义词
+        has      拥有，直接判定子节点中是否有符合条件的元素。
+        prev  查找当前兄弟节点中的上一个节点
+        next  查找当前兄弟节点中的下一个节点
+        find 查找子节点
+
+        index() 获取当前节点在兄弟节点中的下标
+        eq(下标) 通过下标获取指定的元素节点
+
+        attr 设置和修改行间属性
+
+        addClass和removeClass
+
+        width系列的三个方法
+        width()：width
+       innerWidth()：width + padding
+       outerWidth() ：width + border + padding
+       outerWidth(true))： width + border + padding + margin
+
+       height()   innerHeight()   outerHeight()
+       offsetWidth  width + border + padding
+
+       //节点操作
+
+
+     */
+    // $("div").filter(".box").css("backgroundColor", 'orange');
+    // $("div").not(".box").css("backgroundColor", 'yellow');
+    // $("div").has(".box").css("backgroundColor", 'yellow');
+
+    // $("h3").prev().css("backgroundColor", 'red')
+    // $("h3").next().css("backgroundColor", 'red')
+
+    /*  $("ul").find("li").css("backgroundColor", 'blue');
+              $("ul li"); */
+
+    // $("ul").find(".box").css("backgroundColor", 'blue');
+
+    // $("ul").find("[name=hello]").css("backgroundColor", 'blue');
+    //
+    // $("li").eq(3).css("backgroundColor", 'orange');
+    // $("li:eq(4)").css("backgroundColor", 'yellow');
+    //
+    // alert($("#div1").attr("id"));
+    // alert($("#div1").attr("title"));
+    // alert($("#div1").attr("class"));
+    //增加类选择器
+    // $(function () {
+    //     // $("#div2").addClass("box2 box3 box4")
+    //     $("#div2").removeClass("box4");
+    // })
+    // $(function () {
+    //     alert($("#div1").width());
+    //     alert($("#div1").innerWidth());
+    //     alert($("#div1").outerWidth());
+    //     alert($("#div1").outerHeight(true));
+    // })
+
+    //节点操作
+    /*
+       • insertBefore()     before()
+       • insertAfter()      after()
+       • appendTo() 插入到子节点的末尾      appendChild(类似JS的方法)
+          append()
+       • prependTo() 插入到子节点的首位    prepend()
+       • remove()
+    */
+    //找到span节点，插入到div前面
+    // $("span").insertBefore($("#div3"));
+
+    //找到span节点，插入到div后面
+    // $("span").insertAfter($("#div3"));
+
+    //找到span节点，插入到div节点的子节点的末尾
+    // $("span").appendTo($("#div3"));
+
+    //找到span节点，插入到div节点子节点的首位
+    // $("span").prependTo($("div"));
+
+    // $("div").remove();
+
+    //找到span节点插入到div的前面
+    $("span").insertBefore($("div")).css("backgroundColor", 'red');
+    //div节点前面是span
+    $("div").before($("span")).css("backgroundColor", 'green');
+
+</script>
+<style>
+    .box2{
+        background-color: #7FC555;
+    }
+    .box3{
+        margin: 2px;
+    }
+    .box4{
+        background-color: red
+    }
+    #div1{
+        width: 200px;
+        height: 300px;
+        background-color: #7FC555;
+        border: 1px solid black;
+        padding: 8px;
+        margin: 20px;
+    }
+</style>
+</html>

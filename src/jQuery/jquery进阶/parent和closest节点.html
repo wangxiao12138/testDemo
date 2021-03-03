@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <div id = 'div1' class = 'box'>
+        div1
+        <div id = 'div2' class = 'box'>
+            div2
+            <div id="div3">
+                div3
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    /*
+         parent()  获取父节点,
+         parents() 获取父节点们  参数选择器
+         closest() 获得匹配选择器的第一个祖先元素，从当前元素开始沿 DOM 树向上
+         必须传入参数，参数也是选择器，只获取第一个符合条件的元素，从自己开始去查找的
+     */
+    // $("#div3").parent().css("backgroundColor", 'red')
+    // $("#div3").parents().css("backgroundColor", 'orange')
+    $("#div3").closest("#div2").css("backgroundColor", 'red');
+
+
+
+</script>
+</html>

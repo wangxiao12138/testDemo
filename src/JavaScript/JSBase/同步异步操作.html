@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="button">异步加载数据</button>
+    <button id="button2">this和self的区别</button>
+</body>
+<script>
+    var btn = document.getElementById("button")
+    btn.onclick = function () {
+        var a = "20200080005640      ";
+        var b = "20200080005640"
+        alert(a===b);
+        /*
+        * trim() 方法用于删除字符串的头尾空白符，空白符包括：空格、制表符 tab、换行符等其他空白符等。
+          trim() 方法不会改变原始字符串。
+         trim() 方法不适用于 null, undefined, Number 类型
+        * */
+        alert(a.trim() == b.trim());
+    }
+    var btn2 = document.getElementById("button2")
+    btn2.onclick = function () {
+        // var obj = {
+        //     show : function(){
+        //         console.log(this);
+        //     }}
+        //     obj.show();
+        // function show(){
+        //     console.log(this);
+        // }
+        // show();
+        var self = this; //使用变量保存this，self变量的值是不会随着环境改变的
+        setTimeout(function(){
+            console.log(self);
+        },1000)
+    }
+
+
+</script>
+</html>

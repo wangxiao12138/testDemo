@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src = 'jquery-1.10.1.min.js'></script>
+</head>
+<body>
+    <div>div</div>
+    <span>span</span>
+    <p>p</p>
+    <ul>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+    </ul>
+</body>
+
+<script>
+    /*
+        add() 可以将多个选择器拼接在一起
+        slice()  slice(start, end) [start, end)
+        获取指定范围内获取到的元素节点。
+   */
+    // $("div")
+    //     .css("backgroundColor", 'red')
+    //     .click(function(){
+    //         alert("单击");
+    //     })
+    // .mouseover(function () {
+    //     $(this).css("backgroundColor",'blue');
+    // })
+    // .mouseout(function () {
+    //     $(this).css("backgroundColor",'orange');
+    // })
+    // $("span")
+    //     .css("backgroundColor", 'red')
+    //     .click(function(){
+    //         alert("单击");
+    //     })
+    //     .mouseover(function () {
+    //         $(this).css("backgroundColor",'blue');
+    //     })
+    //     .mouseout(function () {
+    //         $(this).css("backgroundColor",'orange');
+    //     })
+    // $("ul li")
+    //     .css("backgroundColor", 'red')
+    //     .click(function(){
+    //         alert("单击");
+    //     })
+    //     .mouseover(function () {
+    //         $(this).css("backgroundColor",'blue');
+    //     })
+    //     .mouseout(function () {
+    //         $(this).css("backgroundColor",'orange');
+    //     })
+
+    // 代码精简
+    $("div").add("span").add("ul li")
+    $("div,span,ul li")
+    .css("backgroundColor", 'red')
+    .click(function(){
+        alert("单击");
+    })
+    .mouseover(function(){
+        $(this).css("backgroundColor", 'orange');
+    })
+    .mouseout(function(){
+        $(this).css("backgroundColor", 'blue');
+    })
+    $("ul li").slice(1, 4).css("backgroundColor", 'green');
+</script>
+</html>

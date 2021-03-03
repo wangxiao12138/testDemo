@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <!--wrap-->
+    <div><span></span></div>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+
+    <!--clone-->
+    <button>赋值节点</button>
+    <div id="div1" title="hello" class="box">hhhhhhhhhhhhhhhhh</div>
+    <div id="div2"></div>
+
+
+</body>
+<script>
+    /*
+       wrap()   每一个获取到的元素节点单独包装  使用指定的 HTML 元素来包裹每个被选元素。
+       wrapAll() 整体包装  使用指定的 HTML 元素来包裹所有被选元素
+       wrapInner() 内部包装 使用指定的 HTML 元素来包裹每个被选元素中的所有内容
+       unwrap()  删除包装  删除上面一层包装，不包括body节点
+     */
+    // $("span").wrap("<p class='box' title='hello'>这是一个段落</p>")
+    // $("span").wrapAll("<p class='box' title='hello'>这是一个段落</p>")
+    // $("span").wrapInner("<p class='box' title='hello'>这是一个段落</p>")
+    $("span").unwrap();
+
+    /*
+        clone()  默认只会克隆节点本身，并不会克隆我们元素节点的行为和事件
+        clone(true) 既会克隆节点本身，还会克隆元素节点的行为和事件
+     */
+    $("#div1").hover(function () {
+        $(this).css("backgroundColor", 'orange');
+    },function () {
+        $(this).css("backgroundColor", 'yellow');
+    })
+    $("button").click(function(){
+        var node = $("#div1").clone(true);
+        node.appendTo($("#div2"));
+    })
+
+</script>
+<style>
+    .box{
+        background-color: #7FC555;
+    }
+</style>
+</html>

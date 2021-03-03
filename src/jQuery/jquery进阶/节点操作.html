@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <div id = 'div1'>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <p id = 'p1'>#p1</p>
+        <p id = 'p2'>#p2</p>
+        <p id = 'p3'>#p3</p>
+        <p id = 'p4'>#p4</p>
+        <em>em</em>
+        <h3>h3</h3>
+        <strong>strong</strong>
+        <h6>h6</h6>
+        <h2>h2</h2>
+    </div>
+    <ul>
+        <li class="start"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="stop"></li>
+        <li></li>
+    </ul>
+    <h5>h5</h5>
+    <h1>h4</h1>
+</body>
+<script>
+    /*
+         节点操作的方法
+         【注】下述所有的方法的参数都是选择器
+         siblings()   用来除当前节点外，所有的兄弟节点
+         nextAll() prevAll() 用来除当前节点外并且当前节点以后（以前）的所有的兄弟节点
+         parentsUntil()    方法返回介于 selector 与 stop 之间的所有祖先元素。
+        祖先是父、祖父、曾祖父，依此类推。
+        nextUntil()方法返回 selector 与 stop 之间的每个元素之后的所有同级元素。
+        prevUntil() 方法返回 selector 与 stop 之间的每个元素之前的所有同级元素。
+        同级元素是共享相同父元素的元素
+
+      */
+    // $("#p1").siblings().css("backgroundColor", 'red');
+    // $("#p1").nextAll().css("backgroundColor", 'red');
+    // $("#p1").prevAll().css("backgroundColor", 'red');
+    // $("#p1").parentsUntil().css("backgroundColor", 'red');
+    $("#p1").nextUntil().css("backgroundColor", 'red');
+    $("#p1").prevUntil().css("backgroundColor", 'orange');
+    // $("li.start").nextUntil("li.stop").css({"color":"red","border":"2px solid red"});
+
+
+</script>
+</html>
